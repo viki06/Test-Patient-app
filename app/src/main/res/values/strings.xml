@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Patient</string>
+    <string name="label_login">Login</string>
+    <string name="label_username">Username</string>
+    <string name="label_password">Password</string>
+    <string name="alert_user_empty">User Name is empty</string>
+    <string name="alert_pass_empty">Password is empty</string>
+</resources>
