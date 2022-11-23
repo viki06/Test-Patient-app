@@ -4,6 +4,7 @@ class AppConstant {
 
     companion object {
         val EMPTYSTRING = ""
+        val EMPTYSPACE = " "
         val EMPTYINT = 0
         val  OSID = "b93a9204-ee21-4cf9-8a94-cf5eeabf7301"
         val ROLEID = "143f37f2-ca38-0ab1-2489-1e47113655fc"

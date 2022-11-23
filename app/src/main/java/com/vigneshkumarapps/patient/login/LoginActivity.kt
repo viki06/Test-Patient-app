@@ -1,12 +1,15 @@
 package com.vigneshkumarapps.patient.login
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
-import com.vigneshkumarapps.patient.Models
 import com.vigneshkumarapps.patient.R
-import com.vigneshkumarapps.patient.Utils
+import com.vigneshkumarapps.patient.Utils.dispalyAlertDialog
+import com.vigneshkumarapps.patient.Utils.displayToast
+import com.vigneshkumarapps.patient.Utils.isOnline
 import com.vigneshkumarapps.patient.databinding.ActivityLoginBinding
 import com.vigneshkumarapps.patient.doctorlist.DoctorListActivity
 
@@ -44,23 +47,27 @@ class LoginActivity : AppCompatActivity(), LoginViewModel.onServiceCallListener 
 
             if (mBinding.userName.text.isEmpty()) {
 
-                Utils.displayToast(this, getString(R.string.alert_user_empty))
+                displayToast(this, getString(R.string.alert_user_empty))
 
                 mBinding.userName.requestFocus()
 
             } else if (mBinding.pass.text.isEmpty()) {
 
-                Utils.displayToast(this, getString(R.string.alert_pass_empty))
+                displayToast(this, getString(R.string.alert_pass_empty))
 
                 mBinding.pass.requestFocus()
 
-            } else {
+            } else if (isOnline(this)){
 
                 mViewModel.loginMethod(
                     this,
                     mBinding.userName.text.toString().trim(),
                     mBinding.pass.text.toString().trim()
                 )
+
+            } else {
+
+                dispalyAlertDialog(this, getString(R.string.alert_no_internet))
 
             }
 
@@ -81,11 +88,24 @@ class LoginActivity : AppCompatActivity(), LoginViewModel.onServiceCallListener 
 
             mBinding.progessBar.root.visibility = View.GONE
 
-            Utils.displayToast(this, msg)
+            displayToast(this, msg)
 
-            if (isSuccess) startActivity(DoctorListActivity.getIntent(this))
+            if (isSuccess) {
+
+                startActivity(DoctorListActivity.getIntent(this))
+
+                finish()
+
+            }
 
         }
+
+    }
+
+    companion object {
+
+        fun getIntent(context: Context): Intent =
+            Intent(context, LoginActivity::class.java)
 
     }
 

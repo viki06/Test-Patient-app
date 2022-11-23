@@ -2,13 +2,19 @@ package com.vigneshkumarapps.patient.doctorlist
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ContextMenu
+import android.view.ContextMenu.ContextMenuInfo
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.PopupMenu
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.vigneshkumarapps.patient.R
 import com.vigneshkumarapps.patient.databinding.ActivityDoctorListBinding
+import com.vigneshkumarapps.patient.login.LoginActivity
+
 
 class DoctorListActivity : AppCompatActivity() {
 
@@ -26,7 +32,25 @@ class DoctorListActivity : AppCompatActivity() {
 
         setContentView(mBinding.root)
 
+        mBinding.progessBar.root.visibility = View.VISIBLE
+
         addObserver()
+
+        addOnClickListener()
+
+    }
+
+    private fun addOnClickListener() {
+
+        with(mBinding.signout) {
+
+            setOnClickListener {
+
+                showPopup(this)
+
+            }
+
+        }
 
     }
 
@@ -36,7 +60,11 @@ class DoctorListActivity : AppCompatActivity() {
 
             if (it.success){
 
-                mBinding.recyclerView.adapter = DoctorListAdapter(this,it.data)
+                mBinding.recyclerView.adapter =
+                    DoctorListAdapter(
+                        context=   this,
+                        data= it.data
+                    )
 
                 mBinding.progessBar.root.visibility = View.GONE
 
@@ -44,6 +72,32 @@ class DoctorListActivity : AppCompatActivity() {
 
         })
 
+    }
+
+    fun showPopup(v: View) {
+
+        val popupMenu: PopupMenu = PopupMenu(this, v)
+
+        popupMenu.menuInflater.inflate(R.menu.option, popupMenu.menu)
+
+        popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+
+            when (item.itemId) {
+
+                R.id.signout -> {
+
+                    startActivity(LoginActivity.getIntent(this))
+
+                    finish()
+
+                }
+
+            }
+
+            true
+        })
+
+        popupMenu.show()
     }
 
 

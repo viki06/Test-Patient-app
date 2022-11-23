@@ -161,7 +161,7 @@ object Models {
         val online_status: String,
         val profile_picture: String,
         val rating: Int,
-        val specialty: List<Specialty>,
+        val specialty: ArrayList<Specialty>,
         val state_id: String
     )
 
