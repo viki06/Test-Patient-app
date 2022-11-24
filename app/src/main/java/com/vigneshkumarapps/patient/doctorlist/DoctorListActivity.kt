@@ -71,7 +71,7 @@ class DoctorListActivity : AppCompatActivity() {
 
     private fun addObserver() {
 
-        mViewModel.doctorList.observe(this, Observer {
+        mViewModel.doctorList.observe(this) {
 
             if (it.success) {
 
@@ -85,7 +85,7 @@ class DoctorListActivity : AppCompatActivity() {
 
             }
 
-        })
+        }
 
     }
 
@@ -111,7 +111,7 @@ class DoctorListActivity : AppCompatActivity() {
 
         } else {
 
-           showCallPopup(mBinding.call)
+            showCallPopup(mBinding.call)
 
         }
 
@@ -131,58 +131,60 @@ class DoctorListActivity : AppCompatActivity() {
 
     fun showPopup(v: View) {
 
-        val popupMenu: PopupMenu = PopupMenu(this, v)
+        PopupMenu(this, v).apply {
 
-        popupMenu.menuInflater.inflate(R.menu.option, popupMenu.menu)
+            menuInflater.inflate(R.menu.option, menu)
 
-        popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+            setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
 
-            when (item.itemId) {
+                when (item.itemId) {
 
-                R.id.signout -> {
+                    R.id.signout -> {
 
-                    startActivity(LoginActivity.getIntent(this))
+                        startActivity(LoginActivity.getIntent(this@DoctorListActivity))
 
-                    finish()
+                        finish()
+
+                    }
 
                 }
 
-            }
+                true
+            })
 
-            true
-        })
+        }.show()
 
-        popupMenu.show()
     }
 
     fun showCallPopup(v: View) {
 
-        val popupMenu: PopupMenu = PopupMenu(this, v)
+        PopupMenu(this, v).apply {
 
-        popupMenu.menuInflater.inflate(R.menu.call_menu, popupMenu.menu)
+            menuInflater.inflate(R.menu.call_menu, menu)
 
-        popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
+            setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
 
-            when (item.itemId) {
+                when (item.itemId) {
 
-                R.id.newCall -> {
+                    R.id.newCall -> {
 
-                    startActivity(VideoCallActivity.getIntent(this@DoctorListActivity, true))
+                        startActivity(VideoCallActivity.getIntent(this@DoctorListActivity, true))
+
+                    }
+
+                    R.id.joinCall -> {
+
+                        startActivity(VideoCallActivity.getIntent(this@DoctorListActivity, false))
+
+                    }
 
                 }
 
-                R.id.joinCall -> {
+                true
+            })
 
-                    startActivity(VideoCallActivity.getIntent(this@DoctorListActivity, false))
-
-                }
-
-            }
-
-            true
-        })
-
-        popupMenu.show()
+        }.show()
+        
     }
 
 

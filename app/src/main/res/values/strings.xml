@@ -16,6 +16,10 @@
     <string name="label_room_key">Room key</string>
     <string name="new_call">New Call</string>
     <string name="join_call">Join Call</string>
+    <string-array name="list_data">
+        <item>All Doctor</item>
+        <item>Favourite Doctor</item>
+    </string-array>
 
     <string name="lib_version">Library version: %s</string>
     <string name="disconnected">Disconnected</string>
