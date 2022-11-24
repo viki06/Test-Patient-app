@@ -5,8 +5,24 @@
     <string name="label_password">Password</string>
     <string name="alert_user_empty">User Name is empty</string>
     <string name="alert_pass_empty">Password is empty</string>
+    <string name="alert_room_key_empty">Room Key is empty</string>
     <string name="label_speciality">Speciality: </string>
     <string name="label_doctor_list">Doctor List</string>
     <string name="sign_out">Sign Out</string>
     <string name="alert_no_internet">Please check your internet connection</string>
+    <string name="label_video_conference">Video Conference</string>
+    <string name="label_join">Join</string>
+    <string name="label_room_pin">Room Pin</string>
+    <string name="label_room_key">Room key</string>
+    <string name="new_call">New Call</string>
+    <string name="join_call">Join Call</string>
+
+    <string name="lib_version">Library version: %s</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="connected">Connected</string>
+    <string name="start_conference">Video Conference</string>
+    <string name="debug_option">Debug option enabled:</string>
+    <string name="settings">Credentials</string>
+    <string name="note">Please check <b>ConnectParams.java</b> file in order to change these values</string>
+    <string name="credentials">VidyoPlatform credentials</string>
 </resources>

@@ -11,13 +11,13 @@ object Utils {
 
     fun displayToast(context : Context, msg : String){
 
-        Toast.makeText(context,msg,Toast.LENGTH_LONG).show()
+        Toast.makeText(context,msg,Toast.LENGTH_SHORT).show()
 
     }
 
     fun dispalyAlertDialog(context: Context, msg: String){
 
-        val alertDialog = AlertDialog.Builder(context).apply {
+        AlertDialog.Builder(context).apply {
 
             setCancelable(false)
 
@@ -27,9 +27,7 @@ object Utils {
 
             setPositiveButton("Ok") { dialog, which -> dialog.dismiss() }
 
-        }
-
-        val alertDialog1 = alertDialog.create().show()
+        }.create().show()
 
     }
 

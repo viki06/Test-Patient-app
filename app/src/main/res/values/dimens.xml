@@ -13,4 +13,15 @@
     <dimen name="margin_normal">10dp</dimen>
     <dimen name="margin_large">15dp</dimen>
 
+    <dimen name="medium_ts">16sp</dimen>
+    <dimen name="mini_ts">12sp</dimen>
+
+    <dimen name="material_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+
+    <dimen name="brand_icon_size">128dp</dimen>
+
+    <dimen name="control_icon_size">42dp</dimen>
+    <dimen name="control_view_size">88dp</dimen>
+
 </resources>
