@@ -25,7 +25,7 @@ object Utils {
 
             setMessage(msg)
 
-            setPositiveButton("Ok") { dialog, which -> dialog.dismiss() }
+            setPositiveButton("Ok") { dialog, _ -> dialog.dismiss() }
 
         }.create().show()
 

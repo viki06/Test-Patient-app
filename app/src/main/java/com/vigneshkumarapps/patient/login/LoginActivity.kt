@@ -33,9 +33,9 @@ class LoginActivity : AppCompatActivity(), LoginViewModel.onServiceCallListener 
 
         addOnClickListener()
 
-        mBinding.userName.setText("patient")
+      /*  mBinding.userName.setText("patient")
 
-        mBinding.pass.setText("Test@987")
+        mBinding.pass.setText("Test@987")*/
 
         mViewModel.setViewModelListener(this)
 
